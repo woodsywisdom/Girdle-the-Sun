@@ -52,8 +52,8 @@ export default function errorReducer(state=defaultState, action) {
     case CLEAR_SIGNUP:
       newState.signUp = [];
       return newState;
-    default:
-      return state;
+      default:
+        return state;
   }
 }
 
