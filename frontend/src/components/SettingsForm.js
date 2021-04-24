@@ -114,35 +114,44 @@ const TagEditForm = () => {
 
   return (
     <>
-      <Dialog open={tagToEdit.id} onClose={closeForm} >
-        <Card >
-          <CardContent display="flex" flexDirections="column" alignItems="center" >
-
-            <Typography className={classes.title} variant='h5'>Edit Tag - {tagToEdit.name}</Typography>
-            {/* <TextField
-              defaultValue={tagToEdit.name}
-              value={newName}
-              onChange={changeName}
-              label='New Tag Name' /> */}
-            <Select
-              defaultValue={tagToEdit.category_id}
-              value={newCategoryId}
-              onChange={changeId}
-            >
-              {/* <option value={tagToEdit.category_id}>{currentCategory.name}</option> */}
-              {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-            </Select>
-
-          </CardContent>
-          <CardActions>
-            <Button onClick={handleSave} >Save</Button>
-            <Button onClick={closeForm}>Cancel</Button>
-          </CardActions>
-        </Card>
-      </Dialog>
+      <AppBar className={classes.appBar} position='fixed' >
+        <Toolbar display='flex' variant="dense" className={classes.toolbar} >
+          <Box className={classes.logoButton} onClick={logoClick} >
+            <Typography variant='button'>LoreKeeper</Typography>
+          </Box>
+          <Box>
+            {currentUser.id ? (
+              <>
+                <Button onClick={openCampaigns} endIcon={<ExpandMoreIcon />}>
+                  {currentCampaign.title ? currentCampaign.title
+                    : <Typography variant='button'>Select a Campaign!</Typography>}
+                </Button>
+                <Menu
+                  anchorEl={anchorEl}
+                  keepMounted
+                  onClose={closeCampaigns}
+                  open={!!anchorEl}
+                >
+                  {campaigns ? Object.values(campaigns).map((campaign) => (
+                    <MenuItem key={campaign.id} value={campaign.id} onClick={campaignClick} >
+                      {campaign.title}
+                    </MenuItem>
+                  )) : null}
+                </Menu>
+              </>) : null}
+          </Box>
+          <Box>
+            {currentUser.is_authenticated ?
+              <Button variant='outlined' onClick={handleLogout}>Logout</Button>
+              : <Button variant='outlined' onClick={handleLogin}>Login</Button>
+            }
+          </Box>
+        </Toolbar>
+      </AppBar>
     </>
   );
-}
+};
+
 
 export default TagEditForm;
 
