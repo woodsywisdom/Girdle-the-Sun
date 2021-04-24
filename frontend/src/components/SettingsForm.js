@@ -15,27 +15,36 @@ const useStyles = makeStyles({
 
 const Navbar = () => {
     const dispatch = useDispatch();
-    const classes = useStyles();
-    const currentCampaign = useSelector(state => state.ui.currentCampaign);
-    const campaigns = useSelector(state => state.entities.campaigns)
-    const currentUser = useSelector(state => state.auth);
-    const [anchorEl, setAnchorEl] = useState(null);
+  const classes = useStyles();
+  const tagToEdit = useSelector(state => state.ui.tagToEdit);
+  const categories = useSelector(state => state.entities.categories)
+  // const currentCategory = categories[tagToEdit.category_id - 1];
+  // const [newName, setNewName] = useState(tagToEdit.name);
+  const [newCategoryId, setNewCategoryId] = useState(tagToEdit.category_id);
+
+  useEffect(() => {
+    // setNewName(tagToEdit.name);
+    setNewCategoryId(tagToEdit.category_id);
+  }, [dispatch, tagToEdit]);
+
+  // const changeName = (e) => {
+  //   setNewName(e.currentTarget.value);
+  // }
+
+  const changeId = (e) => {
+    setNewCategoryId(e.target.value);
+  }
+
+  const closeForm = (e) => {
+    dispatch(setTagToEdit({}));
+  }
+
+  const handleSave = (e) => {
+    dispatch(recategorizeTag(tagToEdit, newCategoryId));
+    dispatch(setTagToEdit({}));
+  }
   
-    useEffect(() => {
-      dispatch(loadCampaigns(currentUser.id));
-    }, [dispatch, currentUser]);
-  
-    const logoClick = e => window.location = '/';
-  
-    const handleLogin = (e) => dispatch(openLogin());
-  
-    const handleLogout = (e) => dispatch(logout());
-  
-    const openCampaigns = (e) => setAnchorEl(e.currentTarget);
-  
-    const closeCampaigns = (e) => setAnchorEl(null);
-  
-    const campaignClick = (e) => window.location = `/campaigns/${e.currentTarget.value}`;
+
   
     return (
       <>
@@ -64,12 +73,6 @@ const Navbar = () => {
                     )) : null}
                   </Menu>
                 </>) : null}
-            </Box>
-            <Box>
-              {currentUser.is_authenticated ?
-                <Button variant='outlined' onClick={handleLogout}>Logout</Button>
-                : <Button variant='outlined' onClick={handleLogin}>Login</Button>
-              }
             </Box>
           </Toolbar>
         </AppBar>
