@@ -6,10 +6,29 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
-  helpCard: {
-    width: '320px',
-    position: 'fixed',
-    left: '860px',
+  actionsBox: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  dashboardBox: {
+    display: 'flex',
+    height: '100vh',
+    paddingTop: '6vh',
+  },
+  categoryList: {
+    paddingTop: "64px",
+  },
+  drawer: {
+    width: "250px",
+    flexShrink: 0,
+  },
+  content: {
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  corkBoard: {
+    flexGrow: 1,
   }
 });
 
