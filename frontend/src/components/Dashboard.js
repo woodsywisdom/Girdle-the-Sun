@@ -16,6 +16,19 @@ import { createNote } from '../../store/notes';
 import { setCurrentCampaign, setCurrentSession, setPins } from '../../store/ui';
 
 const useStyles = makeStyles({
+  welcomeContainer: {
+    display: 'flex',
+    height: '100vh',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  welcomeCard: {
+    padding: '24px',
+  },
+  actionsBox: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
   dashboardBox: {
     display: 'flex',
     height: '100vh',
@@ -35,29 +48,9 @@ const useStyles = makeStyles({
   },
   corkBoard: {
     flexGrow: 1,
-  },
-  notePadContainer: {
-    width: "100%",
-    height: "225px",
-    padding: '8px',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  notePad: {
-    height: "209px",
-    width: '100%',
-    maxWidth: '600px',
-    position: 'fixed',
-    left: '250px',
-  },
-  notepadButtons: {
-    // justifyContents: 'end',
-  },
-  noteField: {
-    width: '100%',
-  },
-  helpCard: {
   }
+  
+
 });
 
 const Dashboard = (props) => {
