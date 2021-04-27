@@ -36,9 +36,49 @@ const CampaignsPage = (props) => {
     setFormOpen(!formOpen);
   }
 
-  // useEffect(() => {
-  //   dispatch(loadCampaigns(userId));
-  // }, [dispatch, userId]);
+  const dispatch = useDispatch();
+  const classes = useStyles();
+  const loginOpen = useSelector(state => state.ui.loginOpen);
+  const errors = useSelector(state => state.errors);
+  const [username1, setUsername1] = useState('');
+  const [password1, setPassword1] = useState('');
+  const [username2, setUsername2] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [confirm, setConfirm] = useState('');
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearLoginErrors());
+      dispatch(clearSignUpErrors());
+    }
+  }, [dispatch]);
+
+  const changeUsername1 = (e) => setUsername1(e.target.value);
+
+  const changePassword1 = (e) => setPassword1(e.target.value);
+
+  const changeUsername2 = (e) => setUsername2(e.target.value);
+
+  const changePassword2 = (e) => setPassword2(e.target.value);
+
+  const changeConfirm = (e) => setConfirm(e.currentTarget.value);
+
+  const demoLogin = (e) => dispatch(login('Ian', 'password'));
+
+  const submitLogin = (e) => dispatch(login(username1, password1));
+
+  const submitSignUp = (e) => dispatch(signUp(username2, password2, confirm));
+
+  const handleClose = (e) => {
+    setUsername1('');
+    setPassword1('');
+    setUsername2('');
+    setPassword2('');
+    setConfirm('');
+    dispatch(clearLoginErrors());
+    dispatch(clearSignUpErrors());
+    dispatch(closeLogin());
+  }
 
 
   return (
@@ -61,26 +101,6 @@ const CampaignsPage = (props) => {
               />
             );
           }) : <></>}
-          {/* <Grid item xs={4}>
-            <Card
-              onClick={handleClick}
-              className={classes.addCard}
-            >
-              <List>
-                <ListItem>
-                  <ListItemText>
-                    <Typography variant='button'>Create New Campaign</Typography>
-                  </ListItemText>
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon><AddIcon /></ListItemIcon>
-                </ListItem>
-                <CardActions >
-                  <Button onC
-                </CardActions>
-              </List>
-            </Card>
-          </Grid> */}
         </Grid>
       </Container>
     </>
