@@ -80,6 +80,27 @@ const TagEditForm = () => {
               {/* <option value={tagToEdit.category_id}>{currentCategory.name}</option> */}
               {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
             </Select>
+            {/* <Box>
+            {currentUser.id ? (
+              <>
+                <Button onClick={openCampaigns} endIcon={<ExpandMoreIcon />}>
+                  {currentCampaign.title ? currentCampaign.title
+                    : <Typography variant='button'>Select a Campaign!</Typography>}
+                </Button>
+                <Menu
+                  anchorEl={anchorEl}
+                  keepMounted
+                  onClose={closeCampaigns}
+                  open={!!anchorEl}
+                >
+                  {campaigns ? Object.values(campaigns).map((campaign) => (
+                    <MenuItem key={campaign.id} value={campaign.id} onClick={campaignClick} >
+                      {campaign.title}
+                    </MenuItem>
+                  )) : null}
+                </Menu>
+              </>) : null}
+          </Box> */}
 
           </CardContent>
           <CardActions>
