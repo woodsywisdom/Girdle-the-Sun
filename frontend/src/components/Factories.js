@@ -12,9 +12,18 @@ import { pinTag, setTagToEdit } from '../../store/ui';
 import { recategorizeTag } from '../../store/tags';
 
 
-const useStyles = makeStyles((theme) => ({
-  tagsList: {
-    width: "100%",
+const useStyles = makeStyles(theme => ({
+  toolbar: {
+    height: "6vh",
+    justifyContent: "space-between",
+    alignItems: 'center',
+  },
+  appBar: {
+    height: "6vh",
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  logoButton: {
+    cursor: 'pointer',
   }
 }));
 

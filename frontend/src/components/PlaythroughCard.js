@@ -8,13 +8,20 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { deleteCampaign } from '../../store/campaigns';
 
 
-const useStyles = makeStyles({
-  campaignCard: {
-    cursor: 'pointer',
-    height: '180px',
-
+const useStyles = makeStyles(theme => ({
+  toolbar: {
+    height: "6vh",
+    justifyContent: "space-between",
+    alignItems: 'center',
   },
-})
+  appBar: {
+    height: "6vh",
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  logoButton: {
+    cursor: 'pointer',
+  }
+}));
 
 const CampaignCard = ({campaign}) => {
   const classes = useStyles();
