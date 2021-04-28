@@ -102,6 +102,25 @@ const CampaignsPage = (props) => {
             );
           }) : <></>}
         </Grid>
+        {/* <List>
+            <ListItem>
+              <ListItemText>
+                <Typography variant='button'>{title}</Typography>
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText>
+                <Typography variant='caption'>{description}</Typography>
+              </ListItemText>
+            </ListItem>
+          </List>
+          <CardActions className={classes.cardActions}>
+            <Button onClick={handleDelete}>
+              <DeleteIcon />
+            </Button>
+          </CardActions>
+        </Card>
+      </Grid> */}
       </Container>
     </>
   );
