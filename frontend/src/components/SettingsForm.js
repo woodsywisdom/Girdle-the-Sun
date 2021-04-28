@@ -10,6 +10,21 @@ import { recategorizeTag } from '../../store/tags';
 const useStyles = makeStyles({
   title: {
     padding: "16px",
+  },
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '16px',
+  },
+  loginContainer: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '16px 0px',
+  },
+  },
+  errorList: {
+    color: 'red',
   }
 })
 
@@ -23,14 +38,7 @@ const TagEditForm = () => {
   // const [newName, setNewName] = useState(tagToEdit.name);
   const [newCategoryId, setNewCategoryId] = useState(tagToEdit.category_id);
 
-  useEffect(() => {
-    // setNewName(tagToEdit.name);
-    setNewCategoryId(tagToEdit.category_id);
-  }, [dispatch, tagToEdit]);
-
-  // const changeName = (e) => {
-  //   setNewName(e.currentTarget.value);
-  // }
+  
 
   const changeId = (e) => {
     setNewCategoryId(e.target.value);
