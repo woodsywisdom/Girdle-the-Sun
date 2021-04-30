@@ -90,6 +90,64 @@ const Navbar = () => {
   );
 };
 
+const useStyles = makeStyles(theme => ({
+  toolbar: {
+    height: "6vh",
+    justifyContent: "space-between",
+    alignItems: 'center',
+  },
+  appBar: {
+    height: "6vh",
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  logoButton: {
+    cursor: 'pointer',
+  }
+}));
+
+const TagAccordion = ({ tag }) => {
+
+  const dispatch = useDispatch();
+
+  const handlePin = (e) => {
+    dispatch(pinTag(tag));
+    return
+  }
+
+  const handleEdit = (e) => {
+    dispatch(setTagToEdit(tag));
+  }
+
+  const handleDelete = (e) => {
+    dispatch(recategorizeTag(tag, 7));
+    return
+  }
+
+  return (
+    <Accordion key={tag.id}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+      >
+        <Typography >{tag.name}</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+
+      </AccordionDetails>
+      <AccordionActions>
+        <IconButton onClick={handlePin} >
+          <ListAltIcon />
+        </IconButton>
+        <IconButton onClick={handleEdit} >
+          <EditIcon />
+        </IconButton>
+        <IconButton onClick={handleDelete} >
+          <DeleteIcon />
+        </IconButton>
+      </AccordionActions>
+    </Accordion>
+  )
+}
+
 export default Navbar;
 
 //tbr
